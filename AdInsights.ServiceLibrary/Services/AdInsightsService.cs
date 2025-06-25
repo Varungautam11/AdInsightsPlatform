@@ -17,6 +17,10 @@ public class AdInsightsService : IAdInsightsService
         _strategyFactory = strategyFactory;
         _redisRepository = redisRepository;
     }
+  
+
+   
+
     public async Task<long> GetAdClicksByCampaignId(string campaignID, string tenantId)
     {
         var strategy = _strategyFactory.GetStrategy(true); // Fetch from Redis first
@@ -29,5 +33,10 @@ public class AdInsightsService : IAdInsightsService
         }
 
         return clicks;
+    }
+
+    public Task GetAdClicksByCampaignId(string campaignID, object tenantId)
+    {
+        throw new NotImplementedException();
     }
 }
