@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdInsights.DA;
+namespace AdInsights.DA.Factory;
 
-internal class AdInsightsRepositoryFactory : IAdInsightsRepositoryFactory
+public class AdInsightsRepositoryFactory : IAdInsightsRepositoryFactory
 {
     private readonly IRedisAdInsightsRepository _redisRepo;
     private readonly IBigQueryAdInsightsRepository _bigQueryRepo;
@@ -21,7 +21,13 @@ internal class AdInsightsRepositoryFactory : IAdInsightsRepositoryFactory
 
     public T GetRepository<T>() where T : class
     {
-        throw new NotImplementedException();
+        if (typeof(T) == typeof(IRedisAdInsightsRepository))
+            return _redisRepo as T;
+
+        if (typeof(T) == typeof(IBigQueryAdInsightsRepository))
+            return _bigQueryRepo as T;
+
+        throw new InvalidOperationException("Unsupported repository type.");
     }
 }
 

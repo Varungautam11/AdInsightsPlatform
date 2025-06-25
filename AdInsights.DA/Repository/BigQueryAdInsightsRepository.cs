@@ -3,7 +3,7 @@ using Google.Cloud.BigQuery.V2;
 
 namespace AdInsights.DA.Repository;
 
-internal class BigQueryAdInsightsRepository : IBigQueryAdInsightsRepository
+public class BigQueryAdInsightsRepository : IBigQueryAdInsightsRepository
 {
 
     private readonly BigQueryClient _bigQueryClient;

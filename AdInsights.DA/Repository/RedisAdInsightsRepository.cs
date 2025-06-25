@@ -3,7 +3,7 @@ using StackExchange.Redis;
 
 namespace AdInsights.DA.Repository;
 
-internal class RedisAdInsightsRepository : IRedisAdInsightsRepository
+public class RedisAdInsightsRepository : IRedisAdInsightsRepository
 {
 
     private readonly IDatabase _redis;
