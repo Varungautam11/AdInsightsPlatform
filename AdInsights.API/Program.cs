@@ -48,16 +48,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 
-//Configure API Versioning
-//builder.Services.AddApiVersioning(options =>
-//{
-//    options.AssumeDefaultVersionWhenUnspecified = true;
-//options.DefaultApiVersion = new ApiVersion(1, 0);
-//options.ReportApiVersions = true;
-//options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-//});
-
-
 // Register Service
 builder.Services.AddTransient<IAdInsightsService, AdInsightsService>();
 builder.Services.AddSingleton<ITenantContextService, TenantContextService>();
@@ -95,10 +85,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-// Register Tenant Service
-builder.Services.AddTransient<IAdInsightsService, AdInsightsService>();
-builder.Services.AddSingleton<ITenantContextService, TenantContextService>();
 
 
 // Configure the HTTP request pipeline.
